@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    div5{
+      color: white;
+      font-family: "Palatino Linotype";
+      font-size: 20px;
+    }
+  </style>
+  
 <head>
   <title>Workspace</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -13,9 +21,10 @@
     <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
   </ul> 
 <% else %> 
-  <ul> 
-    <li><%= link_to "Login", 'login' %></a></li> 
-    <li><%= link_to "Signup", 'signup' %></a></li> 
+  <ul> <div5>
+    <li><%= link_to "Login", 'login',:style=>"color:white;" %></a></li> 
+    <li><%= link_to "Signup", 'signup',:style=>"color:white;" %></a></li> 
+    </div5>
   </ul> 
 <% end %>
 <%= yield %>
