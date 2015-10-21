@@ -9,7 +9,7 @@ class UsernamesController < ApplicationController
       session[:username_id] = @username.id 
       redirect_to '/' 
     else 
-      redirect_to '/signup' 
+      redirect_to 'signup' 
     end 
   end
     
