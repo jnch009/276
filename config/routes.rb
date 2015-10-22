@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
   get 'usernames/new'
+  get 'usernames' => 'usernames#new'
   get 'signup' => 'usernames#new'
   resources :usernames
   get 'login' => 'sessions#new'

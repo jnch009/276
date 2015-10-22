@@ -8,10 +8,9 @@ class SessionsController < ApplicationController
             session[:username_id] = @username.id
             redirect_to '/'
         else
-            redirect_to '/login'
+            redirect_to '/login',:notice => "Invalid Email or password"
         end
      end
-     
      def destroy 
         session[:username_id] = nil 
         redirect_to '/' 
