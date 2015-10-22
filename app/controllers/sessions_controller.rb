@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
             session[:username_id] = @username.id
             redirect_to '/'
         else
-            redirect_to 'login'
+            redirect_to '/login'
         end
      end
      

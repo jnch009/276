@@ -9,7 +9,8 @@ class UsernamesController < ApplicationController
       session[:username_id] = @username.id 
       redirect_to '/' 
     else 
-      redirect_to 'signup' 
+      flash[:a] = "User not created"
+      redirect_to '/signup' 
     end 
   end
     
