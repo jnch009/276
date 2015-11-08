@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
   get 'usernames/new'
+  get 'searches/new'
+  get 'searches/index'
   get 'usernames' => 'usernames#new'
   get 'signup' => 'usernames#new'
   resources :usernames
+  resources :searches
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
