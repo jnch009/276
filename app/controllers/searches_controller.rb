@@ -15,7 +15,10 @@ class SearchesController < ApplicationController
     		render 'new'
   		end
 	end
-    
+	
+	def show 
+	   @search = Search.find(params[:id])
+    end
     private
   	def search_params
     	params.require(:search).permit(:price,:restname)
