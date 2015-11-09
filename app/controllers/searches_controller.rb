@@ -14,13 +14,16 @@ class SearchesController < ApplicationController
   		else
     		render 'new'
   		end
-	end
+    end
+  		
 	
 	def show 
 	   @search = Search.find(params[:id])
     end
+    
     private
-  	def search_params
-    	params.require(:search).permit(:price,:restname,:city,:state)
-  	end
+    
+      	def search_params
+        	params.require(:search).permit(:price,:restname,:city,:state)
+      	end
 end
