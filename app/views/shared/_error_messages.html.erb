@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
@@ -6,6 +7,16 @@
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
+=======
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(object.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+>>>>>>> 58bb4843ce034151d6aaca3ce6bae82114f92e5f
     <% end %>
     </ul>
   </div>
