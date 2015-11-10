@@ -12,6 +12,7 @@ class SearchesController < ApplicationController
 		if @search.save
     		redirect_to @search
   		else
+    		flash.now[:danger] = 'Invalid search combination'   		    
     		render 'new'
   		end
     end
