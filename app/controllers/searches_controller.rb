@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
     def index
-    	@searches = Search.all
+    	@searches = Search.paginate(:page=>params[:page],:per_page=>20)
     end
     
     def new 
@@ -17,13 +17,12 @@ class SearchesController < ApplicationController
   		end
     end
   		
-	
 	def show 
 	   @search = Search.find(params[:id])
     end
     
     private
       	def search_params
-        	params.require(:search).permit(:restname,:city,:state)
+        	params.require(:search).permit(:restname,:city,:state,:slimit)
       	end
 end

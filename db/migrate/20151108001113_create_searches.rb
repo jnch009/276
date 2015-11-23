@@ -5,7 +5,7 @@ class CreateSearches < ActiveRecord::Migration
       t.string :address
       t.string :state
       t.string :city
-
+      t.integer :slimit
       t.timestamps null: false
     end
   end
