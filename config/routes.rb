@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users # routing for /users/1 to work
   get 'searches/new'
   resources :searches
+  get 'restaurantinfo' => 'searches#restaurantinfo'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
