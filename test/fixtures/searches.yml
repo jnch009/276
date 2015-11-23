@@ -3,8 +3,8 @@
 one:
   restname: MyString
   slimit: 5
-  location: MyString
+  location: Burnaby
 two:
   restname: MyString
   slimit: 10
-  location: MyString
+  location: Burnaby
