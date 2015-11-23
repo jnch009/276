@@ -1,8 +1,4 @@
 class SearchesController < ApplicationController
-    def index
-    	@searches = Search.paginate(:page=>params[:page],:per_page=>20)
-    end
-    
     def new 
         @search = Search.new
     end

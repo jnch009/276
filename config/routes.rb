@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   
   resources :users # routing for /users/1 to work
   get 'searches/new'
-  get 'searches/index'
   resources :searches
 
   # The priority is based upon order of creation: first created -> highest priority.
