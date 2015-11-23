@@ -2,9 +2,9 @@
 
 one:
   restname: MyString
-  state: MyString
-  city: MyString
+  slimit: 5
+  location: MyString
 two:
   restname: MyString
-  state: MyString
-  city: MyString
+  slimit: 10
+  location: MyString
