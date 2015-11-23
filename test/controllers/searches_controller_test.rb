@@ -8,12 +8,6 @@ class SearchesControllerTest < ActionController::TestCase
   def teardown
     @search = nil
   end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:searches)
-  end
   
   #testing new 
   test "should get new" do
@@ -23,7 +17,7 @@ class SearchesControllerTest < ActionController::TestCase
   #testing create 
   test "redirecting to search" do
       assert_difference('Search.count') do
-        post :create, search: {restname: 'aa'}
+        post :create, search: {location: 'Vancouver,BC'}
       end
       assert_redirected_to search_path(assigns(:search))
   end
