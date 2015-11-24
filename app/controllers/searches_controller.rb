@@ -1,4 +1,7 @@
 class SearchesController < ApplicationController
+    def index
+        @searches = Search.all
+    end
     def show 
 	    @search = Search.find(params[:id])
     end
@@ -8,8 +11,8 @@ class SearchesController < ApplicationController
     def create
         @search = Search.new(search_params)
 		if @search.save
-    		#render action: "index"
     		redirect_to @search
+    		#render @search
   		else
     		flash.now[:danger] = 'Invalid search combination'   		    
     		render 'new'
