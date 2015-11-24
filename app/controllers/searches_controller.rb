@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
         @searches = Search.all
     end
     def show 
-	   @search = Search.find(params[:id])
+	    @search = Search.find(params[:id])
     end
     def new 
         @search = Search.new
