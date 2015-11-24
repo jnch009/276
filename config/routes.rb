@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete 'logout' =>  'sessions#destroy'
   
   resources :users # routing for /users/1 to work
-  get 'searches/index'
+  get 'searches/new'
   resources :searches
 
   # The priority is based upon order of creation: first created -> highest priority.
