@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
     def create
         @search = Search.new(search_params)
 		if @search.save
-    		redirect_to @search
+            redirect_to @search
     		#render @search
   		else
     		flash.now[:danger] = 'Invalid search combination'   		    
