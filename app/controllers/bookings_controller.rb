@@ -1,13 +1,13 @@
 class BookingsController < ApplicationController
     before_action :logged_in_user
     def new
-        @identity = params[:identity]
         @booking = Booking.new
+        @identity = params[:identity]
     end
     def create
         @booking = Booking.new(booking_params)
-		if @search.save
-    		redirect_to @search
+		if @booking.save
+    		redirect_to root_path
     		#render @search
   		else
     		flash.now[:danger] = 'Invalid search combination'   		    
@@ -21,9 +21,10 @@ class BookingsController < ApplicationController
             redirect_to login_path
         end
     end
+    
     private
-      	def booking_params
-        	params.require(:search).permit(:FirstName,:LastName,:Phone,:Time)
-      	end
+      def booking_params
+        	params.require(:booking).permit(:FirstName,:LastName,:Phone,:Time)
+      end
     
 end
