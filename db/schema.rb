@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125055023) do
+ActiveRecord::Schema.define(version: 20151125094512) do
 
   create_table "bookings", force: :cascade do |t|
     t.string   "FirstName"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20151125055023) do
     t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "offset"
+    t.integer  "sort"
   end
 
   create_table "users", force: :cascade do |t|

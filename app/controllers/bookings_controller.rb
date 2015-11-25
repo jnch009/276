@@ -21,4 +21,9 @@ class BookingsController < ApplicationController
             redirect_to login_path
         end
     end
+    private
+      	def booking_params
+        	params.require(:search).permit(:FirstName,:LastName,:Phone,:Time)
+      	end
+    
 end
