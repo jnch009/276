@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+    before_action :logged_in_user
     def new
         @identity = params[:identity]
         @booking = Booking.new
@@ -14,4 +15,10 @@ class BookingsController < ApplicationController
   		end
     end
     
+    def logged_in_user
+        unless logged_in?
+            flash[:danger] = "You must log in!"
+            redirect_to login_path
+        end
+    end
 end
