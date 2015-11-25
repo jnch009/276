@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20151124061506) do
     t.string   "restname"
     t.integer  "slimit"
     t.string   "location"
+    t.string   "identifier"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "identifier"
   end
 
   create_table "users", force: :cascade do |t|
