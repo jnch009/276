@@ -1,10 +1,4 @@
 class SearchesController < ApplicationController
-    def index
-        @searches = Search.all
-    end
-    def show 
-	    @search = Search.find(params[:id])
-    end
     def new 
         @search = Search.new
     end
@@ -17,6 +11,9 @@ class SearchesController < ApplicationController
     		flash.now[:danger] = 'Invalid search combination'   		    
     		render 'new'
   		end
+    end
+    def show 
+	    @search = Search.find(params[:id])
     end
     
     private
