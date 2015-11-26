@@ -25,12 +25,9 @@ ActiveRecord::Schema.define(version: 20151125225436) do
   create_table "reviews", force: :cascade do |t|
     t.string   "reviewer"
     t.text     "body"
-    t.integer  "booking_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "reviews", ["booking_id"], name: "index_reviews_on_booking_id"
 
   create_table "searches", force: :cascade do |t|
     t.string   "restname"

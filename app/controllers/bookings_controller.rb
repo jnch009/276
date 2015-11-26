@@ -8,7 +8,6 @@ class BookingsController < ApplicationController
         @booking = Booking.new(booking_params)
 		if @booking.save
 		    flash[:notice] = 'Successfully booked this restaurant!'
-    		redirect_to root_path
     		#render @search
   		else
     		flash.now[:danger] = 'Invalid search combination'   		    
