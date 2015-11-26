@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   post 'login'    =>  'sessions#create'
   delete 'logout' =>  'sessions#destroy'
    
-  resources :users # routing for /users/1 to work
+  resources :users 
   resources :searches
   resources :bookings 
   resources :reviews
+  resources :histories
+  # routing for /users/1 to work
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
