@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :logged_in_user
+ #before_action :logged_in_user
   def index
     @reviews = Review.all
   end
@@ -47,5 +47,7 @@ class ReviewsController < ApplicationController
   end
 	
 	private
-	
+	  def review_params
+        	params.require(:review).permit(:reviewer,:body)
+    end
 end
