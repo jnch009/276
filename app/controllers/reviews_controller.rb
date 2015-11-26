@@ -2,11 +2,15 @@ class ReviewsController < ApplicationController
   def index
     @reviews = Review.all
   end
+  
   def new
     @review = Review.new
   end
+  
   def edit
-    @review = current_user.reviews.find(params[:id])
+    @review = User.reviews.find(params[:id])
+  end
+  
   def create
     @review = Review.new(review_params)
     if @review.save
@@ -16,9 +20,20 @@ class ReviewsController < ApplicationController
       flash[:notice] = 'Error creating a review'
       render 'new'
     end
-  def destroy
-    @review = Review.find(params[:id])
-    @review.destroy
-    redirect_to(@review.booking)
   end
+    
+  def update
+	 	@review = User.reviews.find(params[:id])
+ 	 	if @review.update(review_params)
+ 	 		  redirect_to @review
+  	else
+  			render 'edit'
+  	end
+  end
+  
+	def destroy
+  		@review = User.reviews.find(params[:id])
+  		@review.destroy
+  		redirect_to reviews_path
+	end
 end
