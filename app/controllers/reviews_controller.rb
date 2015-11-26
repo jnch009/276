@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
- #before_action :logged_in_user
+  before_action :logged_in_user
   def index
     @reviews = Review.all
   end
@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     if @review.save
       flash[:notice] = 'Review was successfully created.'
-      render action: "index"
+      redirect_to action: "index"
     else
       flash[:notice] = 'Error creating a review'
       render 'new'
