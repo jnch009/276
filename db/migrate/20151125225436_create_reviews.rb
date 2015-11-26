@@ -3,7 +3,6 @@ class CreateReviews < ActiveRecord::Migration
     create_table :reviews do |t|
       t.string :reviewer
       t.text :body
-
       t.timestamps null: false
     end
   end
