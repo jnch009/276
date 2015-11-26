@@ -1,10 +1,12 @@
 class ReviewsController < ApplicationController
+  before_action :logged_in_user
   def index
     @reviews = Review.all
   end
   
   def new
     @review = Review.new
+    @identity = params[:identity]
   end
   
   def edit
@@ -36,4 +38,14 @@ class ReviewsController < ApplicationController
   		@review.destroy
   		redirect_to reviews_path
 	end
+	
+	def logged_in_user
+        unless logged_in?
+            flash[:danger] = "You must log in!"
+            redirect_to login_path
+        end
+  end
+	
+	private
+	
 end
