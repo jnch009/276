@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     if @review.save
       flash[:notice] = 'Review was successfully created.'
-      redirect_to @review
+      render action: "index"
     else
       flash[:notice] = 'Error creating a review'
       render 'new'
