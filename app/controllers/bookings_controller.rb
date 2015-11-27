@@ -7,8 +7,8 @@ class BookingsController < ApplicationController
     def create
         @booking = Booking.new(booking_params)
 		if @booking.save
-		    flash[:notice] = 'Successfully booked this restaurant!'
-    		redirect_to histories_path(:firstname => @booking.FirstName,:lastname => @booking.LastName,:phone => @booking.Phone,:time => @booking.Time)
+		    flash[:notice] = 'Reservation successfully created'
+    		redirect_to histories_path
   		else
     		flash.now[:danger] = 'Invalid search combination'   		    
     		render 'new'
