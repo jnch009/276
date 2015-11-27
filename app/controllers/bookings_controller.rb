@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
         @booking = Booking.new(booking_params)
 		if @booking.save
 		    flash[:notice] = 'Successfully booked this restaurant'
-    		redirect_to histories_path(:name => Rails.cache.read("name"))
+    		redirect_to new_history_path(:name => Rails.cache.read("name"))
   		else
     		flash.now[:danger] = 'Invalid search combination'   		    
     		render 'new'
