@@ -3,12 +3,13 @@ class BookingsController < ApplicationController
     def new
         @booking = Booking.new
         @identity = params[:identity]
+        Rails.cache.write("name",params[:identity])
     end
     def create
         @booking = Booking.new(booking_params)
 		if @booking.save
-		    flash[:notice] = 'Reservation successfully created'
-    		redirect_to histories_path
+		    flash[:notice] = 'Successfully booked this restaurant'
+    		redirect_to histories_path(:name => Rails.cache.read("name"))
   		else
     		flash.now[:danger] = 'Invalid search combination'   		    
     		render 'new'
