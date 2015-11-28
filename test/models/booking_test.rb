@@ -6,7 +6,7 @@ class BookingTest < ActiveSupport::TestCase
   # end
   def setup
     @user = users(:matthew)
-    @booking = Booking.new(FirstName: "Matthew",LastName: "Crawford",Phone: "7788683315",Time: "6:00",user_id: @user.id)
+    @booking = @user.bookings.build(FirstName: "Matthew",LastName: "Crawford",Phone: "7788683315",Time: "6:00")
   end
   
   test "should be valid" do

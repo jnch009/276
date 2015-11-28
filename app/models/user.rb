@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   # Remember token for Remember Me function
+  has_many :bookings
   has_many :reviews
   attr_accessor :remember_token
   
