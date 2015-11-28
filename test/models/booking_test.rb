@@ -17,4 +17,24 @@ class BookingTest < ActiveSupport::TestCase
     @booking.user_id = nil
     assert_not @booking.valid?
   end
+  
+  test "FirstName should be present" do
+    @booking.FirstName = "   "
+    assert_not @booking.valid?
+  end
+  
+  test "LastName should be present" do
+    @booking.LastName = "   "
+    assert_not @booking.valid?
+  end
+
+  test "Phone should be present" do
+    @booking.Phone = "   "
+    assert_not @booking.valid?
+  end
+
+  test "valid phone number" do
+    @booking.Phone = "a" * 141
+    assert_not @booking.valid?
+  end
 end
