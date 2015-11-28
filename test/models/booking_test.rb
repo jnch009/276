@@ -6,7 +6,7 @@ class BookingTest < ActiveSupport::TestCase
   # end
   def setup
     @user = users(:matthew)
-    @booking = @user.bookings.build(FirstName: "Matthew",LastName: "Crawford",Phone: "7788683315",Time: "6:00")
+    @booking = @user.bookings.build(Time: "6:00")
   end
   
   test "should be valid" do
@@ -17,30 +17,10 @@ class BookingTest < ActiveSupport::TestCase
     @booking.user_id = nil
     assert_not @booking.valid?
   end
-  
-  test "FirstName should be present" do
-    @booking.FirstName = "   "
-    assert_not @booking.valid?
-  end
-  
-  test "LastName should be present" do
-    @booking.LastName = "   "
-    assert_not @booking.valid?
-  end
 
-  test "Phone should be present" do
-    @booking.Phone = "   "
-    assert_not @booking.valid?
-  end
-
-  test "valid phone number" do
-    @booking.Phone = "a" * 141
-    assert_not @booking.valid?
-  end
-  
   test "associated bookings should be destroyed" do
     @user.save
-    @user.bookings.create!(FirstName: "Jeremy",LastName:"Ng",Phone:"7788983315")
+    @user.bookings.create!(Time: "6:00")
     assert_difference 'Booking.count', -1 do
       @user.destroy
     end
