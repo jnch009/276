@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
         @search = Search.new
     end
     def create
-        @search = Search.new(search_params)
+        @search = current_user.searches.build(search_params)
 		if @search.save
             redirect_to @search
     		#render @search
