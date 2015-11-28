@@ -11,12 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128094424) do
+ActiveRecord::Schema.define(version: 20151128105530) do
 
   create_table "bookings", force: :cascade do |t|
-    t.string   "FirstName"
-    t.string   "LastName"
-    t.string   "Phone"
     t.string   "Time"
     t.string   "restaurant"
     t.string   "address"

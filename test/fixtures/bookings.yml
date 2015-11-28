@@ -5,9 +5,11 @@ one:
   LastName: MyString
   Phone: MyString
   Time: MyString
+  created_at: <%= 10.minutes.ago %>
 
 two:
   FirstName: MyString
   LastName: MyString
   Phone: MyString
   Time: MyString
+  created_at: <%= Time.zone.now %>

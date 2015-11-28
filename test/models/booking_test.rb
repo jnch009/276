@@ -37,4 +37,12 @@ class BookingTest < ActiveSupport::TestCase
     @booking.Phone = "a" * 141
     assert_not @booking.valid?
   end
+  
+  test "associated bookings should be destroyed" do
+    @user.save
+    @user.bookings.create!(FirstName: "Jeremy",LastName:"Ng",Phone:"7788983315")
+    assert_difference 'Booking.count', -1 do
+      @user.destroy
+    end
+  end
 end
