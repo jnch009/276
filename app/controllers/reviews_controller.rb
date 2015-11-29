@@ -4,7 +4,6 @@ class ReviewsController < ApplicationController
     @rest = params[:rest]
     @reviews = Review.all
   end
-  
   def new
     @review = Review.new
     @identity = params[:identity]
