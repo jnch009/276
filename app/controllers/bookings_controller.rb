@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
     def new
         @booking = Booking.new
         @identity = params[:identity]
+        session[:fag] = @identity
         Rails.cache.write("name",@identity)
     end
     def create
@@ -14,8 +15,8 @@ class BookingsController < ApplicationController
 		    flash[:notice] = 'Successfully booked this restaurant'
 		    redirect_to new_history_path(:name => Rails.cache.read("name"))
   		else
-    		flash.now[:danger] = 'Invalid search combination'   		    
-    		render 'new'
+    		flash[:danger] = 'Invalid booking'  
+    		redirect_to new_booking_path(:identity => session[:fag])
   		end
     end
     
@@ -28,7 +29,7 @@ class BookingsController < ApplicationController
     
     private
       def booking_params
-        	params.require(:booking).permit(:Time)
+        	params.require(:booking).permit(:rdate,:Time)
       end
     
 end
