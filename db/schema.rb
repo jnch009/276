@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129094218) do
+ActiveRecord::Schema.define(version: 20151129110547) do
 
   create_table "bookings", force: :cascade do |t|
     t.string   "Time"
@@ -40,7 +40,11 @@ ActiveRecord::Schema.define(version: 20151129094218) do
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "reviews", ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "searches", force: :cascade do |t|
     t.string   "restname"
