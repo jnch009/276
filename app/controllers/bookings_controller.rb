@@ -1,18 +1,22 @@
 class BookingsController < ApplicationController
     before_action :logged_in_user
+    def index
+        @bookings = Booking.all
+    end
     def new
         @booking = Booking.new
         @identity = params[:identity]
-        Rails.cache.write("name",params[:identity])
+        session[:fag] = @identity
+        Rails.cache.write("name",@identity)
     end
     def create
-        @booking = Booking.new(booking_params)
+        @booking = current_user.bookings.build(booking_params)
 		if @booking.save
 		    flash[:notice] = 'Successfully booked this restaurant'
-    		redirect_to new_history_path(:name => Rails.cache.read("name"))
+		    redirect_to new_history_path(:name => Rails.cache.read("name"))
   		else
-    		flash.now[:danger] = 'Invalid search combination'   		    
-    		render 'new'
+    		#flash[:danger] = 'Invalid booking'  
+    		redirect_to new_booking_path(:identity => session[:fag]), :flash => {:error => @booking.errors.full_messages.join(" , ")}
   		end
     end
     
@@ -25,7 +29,7 @@ class BookingsController < ApplicationController
     
     private
       def booking_params
-        	params.require(:booking).permit(:FirstName,:LastName,:Phone,:Time)
+        	params.require(:booking).permit(:rdate,:Time)
       end
     
 end
