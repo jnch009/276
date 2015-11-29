@@ -1,0 +1,1 @@
+This is the restaurant booking application for CMPT 276 made by Group 14.
