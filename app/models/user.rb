@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Remember token for Remember Me function
   has_many :bookings, dependent: :destroy
   has_many :searches, dependent: :destroy
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   attr_accessor :remember_token
   
   # Restrictions on name, e-mail and password

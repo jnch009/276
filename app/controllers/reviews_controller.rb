@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
   end
   
   def create
-    @review = Review.new(review_params)
+    @review = current_user.reviews.build(review_params)
     if @review.save
       flash[:notice] = 'Review was successfully created.'
       redirect_to action: "index",rest: session[:gay]
