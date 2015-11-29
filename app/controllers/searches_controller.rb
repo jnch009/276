@@ -6,7 +6,11 @@ class SearchesController < ApplicationController
         @search = Search.new
     end
     def create
+    if logged_in?
         @search = current_user.searches.build(search_params)
+    else    
+        @search = Search.new(search_params)
+    end
 		if @search.save
             redirect_to @search
     		#render @search
