@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = 'Review was successfully created.'
       redirect_to action: "index"
     else
-      flash[:notice] = 'Error creating a review'
+      flash[:notice] = 'Error creating a review.'
       render 'new'
     end
   end
