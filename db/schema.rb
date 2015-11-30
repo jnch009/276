@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130064704) do
+ActiveRecord::Schema.define(version: 20151130082004) do
 
   create_table "bookings", force: :cascade do |t|
     t.string   "time"
@@ -50,9 +50,7 @@ ActiveRecord::Schema.define(version: 20151130064704) do
 
   create_table "searches", force: :cascade do |t|
     t.string   "restname"
-    t.integer  "slimit"
     t.string   "location"
-    t.integer  "offset"
     t.integer  "sort"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
