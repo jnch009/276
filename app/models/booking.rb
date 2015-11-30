@@ -8,7 +8,9 @@ class Booking < ActiveRecord::Base
     validate :year2015
     
     def year2015
-       return unless rdate.strftime("%Y") < "2015"
+        foo = :rdate.to_formatted_s(:number)
+        foo = foo[0,4]
+        return if foo.to_i >= 2015
     end
     
    # validate do |booking|
