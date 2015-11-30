@@ -11,13 +11,16 @@ class Booking < ActiveRecord::Base
         else
             woo = Date.today.to_formatted_s(:number)
             foo = restaurant_date.to_formatted_s(:number)
-            bookint = time.to_i
-            time = Time.now
-            time = time.strftime("%H%M")
-            time = time.to_i - 800
+            bookampm = time.strftime("%P")
+            booktime = time.strftime("%H%M").to_i
+            t = Time.now
+            t = t.strftime("%H%M")
+            t = t.to_i - 800
             if foo.to_i < woo.to_i
                 errors.add(:base,"Booking time has already passed")
-            elsif bookint+12 > time.abs
+            elsif bookampm == 'am' && booktime < t.abs
+                errors.add(:base,"Time has already passed")
+            elsif bookampm == 'pm' && booktime+12 < t.abs
                 errors.add(:base,"Time has already passed")
             end
         end

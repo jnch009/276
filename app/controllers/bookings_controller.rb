@@ -44,8 +44,7 @@ class BookingsController < ApplicationController
         time = time.to_i - 800
         woo = Date.today.to_formatted_s(:number)
         datatime = current_user.bookings.find_by(id: params[:id]).time
-        datatime = datatime.to_i
-        datatime = datatime + 12
+        datatime = datatime.strftime("%H%M").to_i
         datadate= current_user.bookings.find_by(id: params[:id]).restaurant_date#.to_i > time.abs && 
         datadate= datadate.to_formatted_s(:number)
         if datadate.to_i >= woo.to_i && datatime < time.abs
