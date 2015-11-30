@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
     
     private
       def booking_params
-        	params.require(:booking).permit(:restaurant_date,:time)
+        	params.require(:booking).permit(:restaurant_date,:time,:people)
       end
       def correct_user
         time = Time.now
