@@ -18,11 +18,17 @@ class Booking < ActiveRecord::Base
         end
     end
     def one_a_day
-    if restaurant_date.nil?
-    else
-        if Booking.exists? restaurant_date: restaurant_date
-            errors.add :base,'You already have a reservation today, you may reserve one table a day'
+        if restaurant_date.nil?
+        else
+            i = 0
+            while i != Booking.pluck(:id).count
+                foo = Booking.pluck(:restaurant_date)[i].to_formatted_s(:number)
+                woo = restaurant_date.to_formatted_s(:number)
+                if foo.to_i == woo.to_i
+                   errors.add(:base,"You can only reserve once per day") 
+                end
+                i+=1
+            end
         end
-    end
     end
 end
