@@ -1,0 +1,22 @@
+<div class="Home-Wrap">
+  <h1>Welcome to Restaurant Booking</h1>
+  <body background = "https://lolleroll.files.wordpress.com/2015/03/wpid-1180178.jpg"></body>
+  <h2>
+    This is the home page for Restaurant Booking!
+    <%#=#foo = foo[0,4]%><br/>
+    <%#if foo.to_i > 2014%>
+    <%#=# "YOU WIN"%>
+    <%#else%>
+    <%#=# "YOU LOSE"%>
+    <%#end%>
+  </h2>
+
+  <%if logged_in?%>
+  <%= link_to "Search for restaurants!", new_search_path ,class: "semi-transparent-button"%>
+  <%= link_to "Check out reviews", reviews_path ,class: "semi-transparent-button"%>
+  <%else%>
+  <%= link_to "Search for restaurants!", new_search_path ,class: "semi-transparent-button"%>
+  <%= link_to "Check out reviews", reviews_path ,class: "semi-transparent-button"%>
+  <%= link_to "Sign up now!", signup_path, class: "semi-transparent-button" %>
+  <%end%>
+</div>

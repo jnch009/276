@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  restname: MyString
+  slimit: 5
+  location: Burnaby
+two:
+  restname: MyString
+  slimit: 10
+  location: Burnaby
