@@ -1,9 +1,14 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
-    assert_response :success
+  def setup
+    @user = User.new(name: "ExUser", email: "life@sfu.ca")
   end
+  
+  test "should be valid" do
+    assert @user.valid?
+  end
+  
+  
 
 end
