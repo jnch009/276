@@ -15,8 +15,8 @@ class SearchesController < ApplicationController
             redirect_to @search
     		#render @search
   		else
-    		flash.now[:danger] = 'Invalid search combination'   		    
-    		render 'new'
+    		flash[:danger] = 'Invalid search combination'   		    
+    		redirect_to new_search_path
   		end
     end
     def show 
