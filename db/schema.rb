@@ -14,6 +14,9 @@
 ActiveRecord::Schema.define(version: 20151129112251) do
 
   create_table "bookings", force: :cascade do |t|
+    t.string   "FirstName"
+    t.string   "LastName"
+    t.string   "Phone"
     t.string   "Time"
     t.string   "restaurant"
     t.string   "address"
