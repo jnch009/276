@@ -4,22 +4,22 @@ class Booking < ActiveRecord::Base
     default_scope -> { order(created_at: :desc) }
     #validates :user_id, presence: true
     validates :restaurant_date, presence: true
-    validate :one_a_day
     validate :year2015
+    validate :one_a_day
     
     def year2015
-        foo = restaurant_date.to_formatted_s(:number)
-        foo = foo[0,4]
-        if foo.to_i < 2015
-            errors.add(:restaurant_date,"can't be in the past")
+        if restaurant_date.nil?
+        else
+            foo = restaurant_date.to_formatted_s(:number)
+            foo = foo[0,4]
+            if foo.to_i < 2015
+                errors.add(:restaurant_date,"can't be in the past")
+            end
         end
     end
     def one_a_day
-        i= 0
-        while i < Booking.pluck(:Time).count
-            if restaurant_date.to_s(:db) == Booking.pluck(:restaurant_date)[i]
-                errors.add(:restaurant_date,": You have already booked a restaurant today. You may only have one reservation a day.")
-            end
-        end
+        if Booking.exists? restaurant_date: restaurant_date
+            errors.add :restaurant_date,'You already have a reservation today, you may reserve one table a day'
+        end    
     end
 end
