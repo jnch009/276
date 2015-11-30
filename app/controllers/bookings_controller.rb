@@ -39,8 +39,20 @@ class BookingsController < ApplicationController
         	params.require(:booking).permit(:restaurant_date,:time)
       end
       def correct_user
-        @booking = current_user.bookings.find_by(id: params[:id])
-        redirect_to root_path if @booking.nil?
+        time = Time.now
+        time = time.strftime("%H%M")
+        time = time.to_i - 800
+        woo = Date.today.to_formatted_s(:number)
+        datatime = current_user.bookings.find_by(id: params[:id]).time
+        datatime = datatime.to_i
+        datatime = datatime + 12
+        datadate= current_user.bookings.find_by(id: params[:id]).restaurant_date#.to_i > time.abs && 
+        datadate= datadate.to_formatted_s(:number)
+        if datadate.to_i >= woo.to_i && datatime < time.abs
+            @booking = current_user.bookings.find_by(id: params[:id])
+        else
+            redirect_to histories_path if @booking.nil?
+        end
       end
     
 end
