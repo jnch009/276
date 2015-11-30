@@ -3,6 +3,8 @@ class Booking < ActiveRecord::Base
     belongs_to :user
     default_scope -> { order(created_at: :desc) }
     #validates :user_id, presence: true
+    validates_presence_of :people
+    validates :people, numericality: {only_integer: true, less_than_or_equal_to: 30}
     validates_presence_of :restaurant_date
     validates_uniqueness_of :user_id, scope: [:restaurant_date], message: "has already booked a restaurant on this date"
     validate :year2015
