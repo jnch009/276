@@ -22,6 +22,6 @@ class SearchesController < ApplicationController
     
     private
       	def search_params
-        	params.require(:search).permit(:restname,:location,:slimit,:offset,:sort)
+        	params.require(:search).permit(:restname,:location,:sort)
       	end
 end
