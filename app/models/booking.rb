@@ -13,8 +13,7 @@ class Booking < ActiveRecord::Base
             foo = restaurant_date.to_formatted_s(:number)
             bookint = time.to_i
             time = Time.now
-            time = time.to_formatted_s(:number)
-            time = time[9,3]
+            time = time.strftime("%H%M")
             time = time.to_i - 800
             if foo.to_i < woo.to_i
                 errors.add(:base,"Booking time has already passed")
