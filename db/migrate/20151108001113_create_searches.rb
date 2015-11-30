@@ -4,7 +4,8 @@ class CreateSearches < ActiveRecord::Migration
       t.string :restname
       t.integer :slimit
       t.string :location
-      t.string :identifier
+      t.integer :offset
+      t.integer :sort
       t.timestamps null: false
     end
   end
