@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
     
     private
       def booking_params
-        	params.require(:booking).permit(:restaurant_date,:Time)
+        	params.require(:booking).permit(:restaurant_date,:time)
       end
       def correct_user
         @booking = current_user.bookings.find_by(id: params[:id])

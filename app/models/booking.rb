@@ -9,10 +9,11 @@ class Booking < ActiveRecord::Base
     def year2015
         if restaurant_date.nil?
         else
+            woo = Date.today.to_formatted_s(:number)
             foo = restaurant_date.to_formatted_s(:number)
-            foo = foo[0,4]
-            if foo.to_i < 2015
-                errors.add(:base,"can't be in the past")
+            timeint = time.to_i
+            if foo.to_i < woo.to_i
+                errors.add(:base,"Booking time has already passed")
             end
         end
     end
