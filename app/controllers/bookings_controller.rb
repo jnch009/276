@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
 		    redirect_to new_history_path(:name => Rails.cache.read("name"))
   		else
     		#flash[:danger] = 'Invalid booking'  
-    		redirect_to new_booking_path(:identity => session[:fag]), :flash => {:error => @booking.errors.full_messages.join(" , ")}
+    		redirect_to new_booking_path(:identity => session[:fag]), :flash => {:error => @booking.errors.full_messages.join("  ").html_safe}
   		end
     end
     
