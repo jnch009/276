@@ -1,3 +1,7 @@
+<%time = Time.now%>
+           <% time = time.to_formatted_s(:number)%>
+          <%=  time = time[9,3]%>
+          <%  time = time.to_i - 800%>
 <% provide(:title, "About") %>
 <h1>About Us</h1>
 <p>
