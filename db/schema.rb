@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130054334) do
+ActiveRecord::Schema.define(version: 20151130064704) do
 
   create_table "bookings", force: :cascade do |t|
     t.string   "time"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20151130054334) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.string   "restaurants"
+    t.string   "stars"
   end
 
   add_index "reviews", ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at"
