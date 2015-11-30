@@ -3,23 +3,23 @@ class Booking < ActiveRecord::Base
     belongs_to :user
     default_scope -> { order(created_at: :desc) }
     #validates :user_id, presence: true
-    validates :rdate, presence: true, uniqueness: true
-    #validate :yeardigits
+    validates :restaurant_date, presence: true
+    validate :one_a_day
     validate :year2015
     
     def year2015
-        foo = :rdate.to_formatted_s(:number)
+        foo = restaurant_date.to_formatted_s(:number)
         foo = foo[0,4]
-        return if foo.to_i >= 2015
+        if foo.to_i < 2015
+            errors.add(:restaurant_date,"can't be in the past")
+        end
     end
-    
-   # validate do |booking|
-#        if :rdate.blank?
-#        i = 0
-#        while i < Booking.pluck(:restaurant).count
-#           booking.errors.add_to_base("You have already booked a restaurant today") if Booking.pluck(:rdate)[i] == rdate.strftime("%Y-%m-%d")
-#        i+=1
-#        end
-#        end
-#    end
+    def one_a_day
+        i= 0
+        while i < Booking.pluck(:Time).count
+            if restaurant_date.to_s(:db) == Booking.pluck(:restaurant_date)[i]
+                errors.add(:restaurant_date,": You have already booked a restaurant today. You may only have one reservation a day.")
+            end
+        end
+    end
 end

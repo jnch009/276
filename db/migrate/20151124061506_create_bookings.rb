@@ -4,7 +4,7 @@ class CreateBookings < ActiveRecord::Migration
       t.string :Time
       t.string :restaurant
       t.string :address
-      t.date :rdate
+      t.date :restaurant_date
       t.string :restid
       t.references :user, index: true, foreign_key: true
       t.timestamps null: false
