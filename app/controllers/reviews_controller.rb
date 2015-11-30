@@ -20,8 +20,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = 'Review was successfully created.'
       redirect_to action: "index",rest: session[:gay]
     else
-      flash[:notice] = 'Error creating a review.'
-      render 'new'
+      render :template => "reviews/_form", :locals => {:identity => session[:gay]}
     end
   end
     
