@@ -16,8 +16,12 @@ class Booking < ActiveRecord::Base
             booktime = time.strftime("%H%M").to_i
             t = Time.now
             t = t.strftime("%H%M")
-            t = t.to_i - 800
-            if foo.to_i < woo.to_i && booktime < t.abs
+            if t.to_i >= 0 && time.to_i < 800
+                t = time.to_i + 1600
+            else
+                t = time.to_i - 800
+            end
+            if foo.to_i < woo.to_i && booktime < t
                 errors.add(:base,"Booking day/Time has already passed")
             end
         end
