@@ -23,3 +23,17 @@
       color:red;
   }
 }
+
+.Booking-Wrap-Small {
+  @include centered;
+  overflow: auto;
+  width: 250px;
+  height: 350px;
+  padding: 10px;
+  h1{
+   color: white;   
+  }
+  h2{
+      color:red;
+  }
+}
