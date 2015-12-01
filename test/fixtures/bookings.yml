@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  Time: MyString
+  restaurant_date: MyString
+  time: 2013-02-02 01:00:00 UTC 
+  people: 15
   created_at: <%= 10.minutes.ago %>
 
 two:

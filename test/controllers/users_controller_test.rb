@@ -22,4 +22,8 @@ class UsersControllerTest < ActionController::TestCase
         get :show, id: @user.id
         assert_response :success
     end
+    test "should update user" do
+        patch :update, id: @user.id, user: {name: "jeremy", email: "jn@sfu.ca", password: "123456"}
+        assert_redirected_to user_path(assigns(:user))
+    end
 end

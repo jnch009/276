@@ -5,7 +5,7 @@ matthew:
   password_digest: <%= User.digest('password') %>
   
 jeremy:
-  id: 1
+  id: 2
   name: jeremy
   email: jngcheng@a.com
   password_digest: <%= User.digest('password') %>

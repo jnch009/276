@@ -3,9 +3,10 @@
 one:
   reviewer: MyString
   body: MyText
+  stars: 2
 
 
 two:
   reviewer: MyString
   body: MyText
-
+  stars: 5

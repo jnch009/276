@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-    before_action :logged_in_user
+    #before_action :logged_in_user
     before_action :correct_user, only: :destroy
     def index
         @bookings = Booking.all
