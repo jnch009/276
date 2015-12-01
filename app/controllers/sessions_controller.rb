@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       # Log the user in and redirect to the user's show page
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user) # Remember user
-      flash.now[:notice] = 'Successfully Logged In!'  
+      flash[:notice] = 'Successfully Logged In!'  
       redirect_to root_path
     else
       # Create an error message
