@@ -50,6 +50,7 @@ class BookingsController < ApplicationController
         if datadate.to_i >= woo.to_i && datatime < time.abs
             @booking = current_user.bookings.find_by(id: params[:id])
         else
+            flash[:danger] = "This reservation time has already passed."
             redirect_to histories_path if @booking.nil?
         end
       end
