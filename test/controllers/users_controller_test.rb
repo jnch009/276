@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
     def setup 
-        @user = users(:matthew)
+        @user = users(:jeremy)
     end
     # called after every single test
      def teardown
@@ -20,5 +20,6 @@ class UsersControllerTest < ActionController::TestCase
     end
     test "showing user" do
         get :show, id: @user.id
+        assert_response :success
     end
 end
