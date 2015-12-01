@@ -8,7 +8,7 @@ class BookingsControllerTest < ActionController::TestCase
     def teardown
         @booking = nil
     end
-    test "should get new" do
+    test "testing before action" do
         get :new
         assert_response 302
     end
