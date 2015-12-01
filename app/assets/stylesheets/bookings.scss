@@ -12,8 +12,10 @@
 }
 .Booking-Wrap {
   @include centered;
+  color: white;
+  overflow: auto;
   width: 450px;
-  height: 350px;
+  height: 550px;
   padding: 10px;
   h1{
    color: white;   
