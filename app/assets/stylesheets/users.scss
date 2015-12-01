@@ -73,3 +73,29 @@ input::-webkit-input-placeholder, .buttonBox {
     box-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
   }
 }
+
+.semi-transparent-button3 {
+  display: block;
+  float: left;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 8px;
+  width: 80%;
+  max-width: 200px;
+  background: #fff; /* fallback color for old browsers */
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-out;
+}
+
+.semi-transparent-button3:hover,
+.semi-transparent-button3:focus,
+.semi-transparent-button3:active {
+  background: #fff;
+  color: #000;
+  transition: all 0.5s ease-in;
+}
