@@ -41,7 +41,7 @@ class BookingsController < ApplicationController
       def correct_user
         time = Time.now
         time = time.strftime("%H%M")
-        time = time.to_i - 800
+        time = time.to_i - 800 + 2400
         woo = Date.today.to_formatted_s(:number)
         datatime = current_user.bookings.find_by(id: params[:id]).time
         datatime = datatime.strftime("%H%M").to_i
