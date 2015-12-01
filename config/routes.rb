@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :searches
   resources :bookings 
   resources :reviews
-  resources :histories
+  resources :histories 
   # routing for /users/1 to work
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

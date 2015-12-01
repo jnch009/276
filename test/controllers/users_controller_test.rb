@@ -1,31 +1,24 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  def setup
-    @user = User.new(name: "Example User", email: "life@sfu.ca", password: "blahblahblah")
-  end
-  
-  test "should be valid" do
-    assert @user.valid?
-  end
-  
-  test "name should be present" do
-    @user.name = ""
-    assert_not @user.valid?
-  end
-
-  test "email should be present" do
-    @user.email = "     "
-    assert_not @user.valid?
-  end
-  
-  test "name is 50 chars max" do
-    @user.name = "a" * 51
-    assert_not @user.valid?
-  end
-  
-  test "email should not be too long" do
-    @user.email = "a" * 244 + "@example.com"
-    assert_not @user.valid?
-  end
+    def setup 
+        @user = users(:matthew)
+    end
+    # called after every single test
+     def teardown
+        @user = nil
+     end
+ 
+    test "getting new action" do
+        get :new
+    end
+    test "creating a user" do
+        assert_difference('User.count') do
+          post :create, user: {name: "Jeremy", email: "jngcheng@sfu.ca", password: "foobar", password_confirmation: "foobar"}
+        end
+        assert_redirected_to user_path(assigns(:user))
+    end
+    test "showing user" do
+        get :show, id: @user.id
+    end
 end
