@@ -1,3 +1,12 @@
+<%datetime = DateTime.now.to_date%>
+<%datetime = datetime.to_formatted_s(:number)%>
+<%datetime = datetime.to_i%>
+
+<%date = Date.today%>
+<%date = date.to_formatted_s(:number)%><br/>
+<%time = Time.now%>
+<%time = time.strftime("%H%M")%>
+<%=time = time.to_i - 800+2400%><br/>
 <% provide(:title, "About") %>
 <h1>About Us</h1>
 <p>

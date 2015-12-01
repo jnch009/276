@@ -2,9 +2,9 @@
 
 one:
   restname: MyString
-  slimit: 5
   location: Burnaby
+  sort: 1
 two:
   restname: MyString
-  slimit: 10
   location: Burnaby
+  sort: 1

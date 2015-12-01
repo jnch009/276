@@ -11,19 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130082004) do
+ActiveRecord::Schema.define(version: 20151130224845) do
 
   create_table "bookings", force: :cascade do |t|
+<<<<<<< HEAD
     t.string   "FirstName"
     t.string   "LastName"
     t.string   "Phone"
     t.string   "Time"
+=======
+    t.datetime "time"
+>>>>>>> b05df667e2de27ae93eeb52daa53d06051718a19
     t.string   "restaurant"
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+<<<<<<< HEAD
     t.date     "rdate"
+=======
+    t.date     "restaurant_date"
+    t.integer  "people"
+>>>>>>> b05df667e2de27ae93eeb52daa53d06051718a19
   end
 
   add_index "bookings", ["user_id", "created_at"], name: "index_bookings_on_user_id_and_created_at"
@@ -69,6 +78,7 @@ ActiveRecord::Schema.define(version: 20151130082004) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
