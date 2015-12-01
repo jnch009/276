@@ -41,13 +41,17 @@ class BookingsController < ApplicationController
       def correct_user
         time = Time.now
         time = time.strftime("%H%M")
-        time = time.to_i - 800 + 2400
+        if time.to_i >= 0 && time.to_i < 800
+            time = time.to_i + 1600
+        else
+            time = time.to_i - 800
+        end
         woo = Date.today.to_formatted_s(:number)
         datatime = current_user.bookings.find_by(id: params[:id]).time
         datatime = datatime.strftime("%H%M").to_i
         datadate= current_user.bookings.find_by(id: params[:id]).restaurant_date#.to_i > time.abs && 
         datadate= datadate.to_formatted_s(:number)
-        if datadate.to_i >= woo.to_i && datatime < time.abs
+        if datadate.to_i >= woo.to_i && datatime > time
             @booking = current_user.bookings.find_by(id: params[:id])
         else
             flash[:danger] = "This reservation time has already passed."

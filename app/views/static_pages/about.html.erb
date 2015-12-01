@@ -6,7 +6,8 @@
 <%date = date.to_formatted_s(:number)%><br/>
 <%time = Time.now%>
 <%time = time.strftime("%H%M")%>
-<%=time = time.to_i - 800+2400%><br/>
+<%=time.to_i%>
+<%=time = time.to_i - 800%><br/>
 <% provide(:title, "About") %>
 <h1>About Us</h1>
 <p>
