@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-input::-webkit-input-placeholder, buttonBox {
+input::-webkit-input-placeholder, .buttonBox {
   font-family: 'roboto', sans-serif;
   transition: all 0.3s ease-in-out;
 }
