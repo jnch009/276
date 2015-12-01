@@ -18,6 +18,7 @@ input::-webkit-input-placeholder, .buttonBox {
 
 .Form-Wrap {
   @include centered;
+  overflow: auto;
   width: 360px;
   height: 490px;
   border-radius: 3px;

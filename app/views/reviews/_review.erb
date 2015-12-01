@@ -1,20 +1,24 @@
+ <body background = "http://img.lapseshot.com/images/www.ecardmedia.eu/data/media/873/cortina_gray.jpg"></body>
+ 
   <%i=0%>
   <center class = "center">
-  <center><%= link_to 'New Restaurant Search', new_search_path, class: "btn btn-primary"%></center>
+  <center><%= link_to 'New Restaurant Search', new_search_path, class: "semi-transparent-button2"%></center>
   </center>
   <h1>Reviews</h1>
-  <table style="width:100%">
-  <tr>
-    <th>Restaurant</th>
-    <th>Reviewer</th>
-    <th>Review</th>
-    <th>Rating</th>
+  
     <%while i < Review.pluck(:body).count%>
-    <tr>
-      <td><%=Review.pluck(:restaurants)[i]%></td>
-      <td><%=Review.pluck(:reviewer)[i]%></td>
-      <td><%=Review.pluck(:body)[i]%></td>
-      <td><% if Review.pluck(:stars)[i] == '4.5'%>
+      <div class = "wrapReview2">
+      <pSearch> 
+
+  <%time = Time.parse(Review.pluck(:created_at)[i].to_s)%><br/>
+  <b>Restaurant Name: </b><%=Review.pluck(:restaurants)[i]%><br/>
+  <b>Reviewer: </b><%=Review.pluck(:reviewer)[i]%><br/>
+  <b>Body: </b><%=Review.pluck(:body)[i]%><br/>
+  <b>Date and Time reviewed: </b><%=time.in_time_zone("Pacific Time (US & Canada)")%><br/>
+
+
+
+      <% if Review.pluck(:stars)[i] == '4.5'%>
               <img src="http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png" alt="4.5" height="20" width="100">
           <% elsif Review.pluck(:stars)[i] == '4'%>
               <img src="http://s3-media4.fl.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png" alt="4" height="20" width="100">
@@ -34,8 +38,10 @@
               <img src="http://s3-media2.fl.yelpcdn.com/assets/2/www/img/b561c24f8341/ico/stars/v1/stars_2.png" alt="2" height="20" width="100">
           <%else%>
               <img src="http://s3-media4.fl.yelpcdn.com/assets/2/www/img/c7fb9aff59f9/ico/stars/v1/stars_2_half.png" alt="2.5" height="20" width="100">
-          <%end%></td>
-    </tr>
+              
+          <%end%>
+    </pSearch> 
+</div>
     <%i+=1%>
     <% end %>
     </table>

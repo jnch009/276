@@ -2,20 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.bigwrapHistory{
-    width: 1290px;
-}
 
 .wrapHistory {
     margin: 20px ;
     display: block;
-    width: 430px;
+    width: 500px;
     height: 130px;
     padding:10px;
     background: #D4DEDF;
     box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
     background: -webkit-linear-gradient(90deg, #D4DEDF, #DCDCDE);
    
+}
+
+.wrapReview{
+    margin: 20px ;
+    display: block;
+    width: 500px;
+    height: 130px;
+    padding:10px;
+    background: #D4DEDF;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    background: -webkit-linear-gradient(90deg, #D4DEDF, #DCDCDE);
+    overflow: auto;
+    
 }
 
 h2Search{
