@@ -8,15 +8,16 @@ class SearchesController < ApplicationController
     else    
         @search = Search.new(search_params)
     end
-		if @search.save
-            redirect_to @search
-    		#render @search
+        if @search.save
+            redirect_to search_path(@search,i: 0)
+    		#render action: "index"
   		else
     		flash[:danger] = 'Invalid search combination'   		    
     		redirect_to new_search_path
   		end
     end
     def show 
+        @i = params[:i]
 	    @search = Search.find(params[:id])
     end
     
