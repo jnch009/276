@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
         @search = Search.new(search_params)
     end
         if @search.save
-            redirect_to search_path(@search,i: 0)
+            redirect_to search_path(@search,i: 0) # passing parameter i
     		#render action: "index"
   		else
     		flash[:danger] = 'Invalid search combination'   		    
