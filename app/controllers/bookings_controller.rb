@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     def create
         @booking = current_user.bookings.build(booking_params)
 		if @booking.save
+		    #current_user.score += 100
 		    flash[:notice] = 'Successfully booked this restaurant'
 		    redirect_to new_history_path(:name => Rails.cache.read("name"))
   		else
@@ -51,7 +52,7 @@ class BookingsController < ApplicationController
         datatime = datatime.strftime("%H%M").to_i
         datadate= current_user.bookings.find_by(id: params[:id]).restaurant_date#.to_i > time.abs && 
         datadate= datadate.to_formatted_s(:number)
-        if datadate.to_i >= woo.to_i && datatime > time
+        if datadate.to_i >= woo.to_i-1 && datatime > time
             @booking = current_user.bookings.find_by(id: params[:id])
         else
             flash[:danger] = "This reservation time has already passed."
