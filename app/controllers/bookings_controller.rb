@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     def create
         @booking = current_user.bookings.build(booking_params)
 		if @booking.save
-		    #current_user.score += 100
+		    User.increment_counter(:score,current_user.id)
 		    flash[:notice] = 'Successfully booked this restaurant'
 		    redirect_to new_history_path(:name => Rails.cache.read("name"))
   		else
