@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "actionpack", ">= 4.2.5.2"
 gem 'will_paginate'
 gem 'yelp', require: 'yelp'
 gem 'bootstrap-sass', '3.2.0.0'
