@@ -1,0 +1,78 @@
+<%require 'yelp'%>
+<%client = Yelp::Client.new({ consumer_key: 'HTpdbvrbJiMtFn7G3ipJDQ',
+                            consumer_secret: 'HKwaFU2o9EJvXi9JyoPdUik2Ga0',
+                            token: 'CrHKxo6-nC1GS_J3OVjOCkAjDntASN3G',
+                            token_secret: 'qd0iOcnCFhNTP8U5zlF8146MAQM'
+                          })%>
+<%response = client.business(@name)%>
+<body background="http://www.yoenna.com/wp-content/uploads/2015/10/vintage-city-wallpaper-wide-awesome.jpg"> </body>
+<h2Search>Booking History</h2Search>
+
+<%i=0%>
+<%while i < Booking.pluck(:restaurant).count%>
+<%if current_user.id == Booking.pluck(:user_id)[i]%>
+<%bookhistory = Booking.find(Booking.maximum(:id))%>
+<%bookhistory.restaurant = response.business.name%>
+<%bookhistory.address = ((response.business.location.display_address).to_sentence(two_words_connector: ',',last_word_connector:','))%>
+<%bookhistory.save!%>
+
+<div class = "wrapHistory">
+<pSearch> 
+Restaurant Name: <%=Booking.pluck(:restaurant)[i]%><br/>
+Number of people:<%=Booking.pluck(:people)[i]%><br/>
+Address: <%=Booking.pluck(:address)[i]%><br/>
+Reservation Time: <%=Booking.pluck(:time)[i]%><br/>
+Date: <%=Booking.pluck(:restaurant_date)[i]%>
+
+</pSearch> 
+</div>
+
+<%end%>
+<%i+=1%>
+<%end%>
+
+
+<h2Search>Your Reviews</h2Search>
+<%j=0%>
+<%while j < Review.pluck(:body).count%>
+<%if current_user.id == Review.pluck(:user_id)[j]%>
+
+<div class = "wrapReview">
+<pSearch> 
+
+<%time = Time.parse(Review.pluck(:created_at)[j].to_s)%><br/>
+<b>Restaurant Name: </b><%=Review.pluck(:restaurants)[j]%><br/>
+<b>Body: </b><%=Review.pluck(:body)[j]%><br/>
+<b>Date and Time reviewed: </b><%=time.in_time_zone("Pacific Time (US & Canada)")%><br/>
+
+</pSearch> 
+</div>
+
+<%end%>
+<%j+=1%>
+<%end%><br/>
+
+
+<h2Search>Search History</h2Search>
+
+<%j=0%>
+<%while j < Search.pluck(:location).count%>
+<%if current_user.id == Search.pluck(:user_id)[j]%>
+
+<div class = "wrapHistory">
+<pSearch> 
+
+<%time = Time.parse(Search.pluck(:created_at)[j].to_s)%><br/>
+<b>Date and Time searched: </b><%=time.in_time_zone("Pacific Time (US & Canada)")%><br/>
+<b>Restaurant Name: </b><%=Search.pluck(:restname)[j]%><br/>
+<b>Location: </b><%=Search.pluck(:location)[j]%><br/>
+<b>Sort:</b> <%=Search.pluck(:sort)[j]%><br/>
+
+</pSearch> 
+</div>
+
+<%end%>
+<%j+=1%>
+<%end%>
+
+
