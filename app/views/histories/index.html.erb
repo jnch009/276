@@ -1,0 +1,94 @@
+<body background="http://www.yoenna.com/wp-content/uploads/2015/10/vintage-city-wallpaper-wide-awesome.jpg"> </body>
+
+<h2Search>Booking History</h2Search><br/>
+<%time = Time.now%>
+<%time = time.strftime("%H%M")%>
+<%if time.to_i >= 0 && time.to_i < 800%>
+<%time = time.to_i + 1600%>
+<%else%>
+<%time = time.to_i - 800%>
+<%end%>
+
+<%woo = Date.today.to_formatted_s(:number)%>
+
+<%i=0%>
+<%while i < Booking.pluck(:restaurant).count%>
+<%if current_user.id == Booking.pluck(:user_id)[i]%>
+<%datatime = Booking.pluck(:time)[i]%>
+<%datatime = datatime.strftime("%H%M").to_i%>
+<%datadate = Booking.pluck(:restaurant_date)[i]%>
+<%datadate = datadate.to_formatted_s(:number)%>
+<%#datatime = datatime + 12%>
+    
+    
+    <%if datadate.to_i >= woo.to_i && datatime > time%>
+    <div class = "wrapHistory">
+    <pSearch>
+        <b>Restaurant Name: </b><%=Booking.pluck(:restaurant)[i]%><br/>
+        <b>Number of people:</b><%=Booking.pluck(:people)[i]%><br/>
+        <b>Address: </b><%=Booking.pluck(:address)[i]%><br/>
+        <b>Reservation Time: </b><%=Booking.pluck(:time)[i].strftime("%H:%M")%><br/>
+        <b>Date: </b><%=Booking.pluck(:restaurant_date)[i]%><br/>
+        <%= button_to "Cancel Reservation",booking_path(Booking.pluck(:id)[i]),data: {:confirm => "Are you sure you want to cancel this reservation?"}, :method => :delete %><br/>
+    </pSearch> 
+    </div>
+
+    <%else%>
+    <div class = "wrapHistory">
+    <pSearch> 
+    <b>Restaurant Name: </b><%=Booking.pluck(:restaurant)[i]%><br/>
+    <b>Number of people:</b><%=Booking.pluck(:people)[i]%><br/>
+    <b>Address: </b><%=Booking.pluck(:address)[i]%><br/>
+    <b>Reservation Time: </b><%=Booking.pluck(:time)[i].strftime("%H:%M")%><br/>
+    <b>Date: </b><%=Booking.pluck(:restaurant_date)[i]%><br/>
+    </pSearch> 
+    </div>
+    <%end%>
+<%end%>
+<%i+=1%>
+<%end%>
+
+<h2Search>Your Reviews</h2Search>
+<%j=0%>
+<%while j < Review.pluck(:body).count%>
+<%if current_user.id == Review.pluck(:user_id)[j]%>
+
+<div class = "wrapReview">
+<pSearch> 
+
+<%time = Time.parse(Review.pluck(:created_at)[j].to_s)%><br/>
+<b>Restaurant Name: </b><%=Review.pluck(:restaurants)[j]%><br/>
+<b>Body: </b><%=Review.pluck(:body)[j]%><br/>
+<b>Date and Time reviewed: </b><%=time.in_time_zone("Pacific Time (US & Canada)")%><br/>
+
+</pSearch> 
+</div>
+
+<%end%>
+<%j+=1%>
+<%end%><br/>
+
+
+<h2Search>Search History</h2Search><br/>
+
+<%j=0%>
+<%while j < Search.pluck(:location).count%>
+<%if current_user.id == Search.pluck(:user_id)[j]%>
+
+<div class = "wrapHistory">
+<pSearch> 
+
+<%time = Time.parse(Search.pluck(:created_at)[j].to_s)%><br/>
+<b>Date and Time searched: </b><%=time.in_time_zone("Pacific Time (US & Canada)").strftime("%Y-%m-%d %H:%M")%><br/>
+<b>Restaurant Name: </b><%=Search.pluck(:restname)[j]%><br/>
+<b>Location: </b><%=Search.pluck(:location)[j]%><br/>
+<b>Sort:</b> <%=Search.pluck(:sort)[j]%><br/>
+
+</pSearch> 
+</div>
+
+<%end%>
+<%j+=1%>
+<%end%>
+
+
