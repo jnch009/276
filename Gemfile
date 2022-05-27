@@ -32,7 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'rack', '~> 2.2.2'
+gem 'rack', '~> 2.2.3'
 
 gem 'tzinfo-data'
 
